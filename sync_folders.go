@@ -5,7 +5,6 @@ import (
 	"io"
 	"os"
 	"path/filepath"
-	"time"
 )
 
 func main() {
@@ -126,7 +125,7 @@ func copyFile(src, dst string, info os.FileInfo) error {
 		return err
 	}
 
-	if err := os.Chtimes(dst, time.Now(), info.ModTime()); err != nil {
+	if err := os.Chtimes(dst, info.ModTime(), info.ModTime()); err != nil {
 		return err
 	}
 	return nil
